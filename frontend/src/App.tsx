@@ -1,18 +1,28 @@
 import './App.css';
+import React, { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './Styles/styles.scss';
 
 function App() {
+  const [imgChosen, setImgChosen] = useState('');
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     //accept: 'image/*',
     onDrop: (acceptedFiles) => {
       const file = acceptedFiles[0];
+
+      try {
+        fetch('http://localhost:8000/image').then(res => res.json()).then(data => setImgChosen(data.message));
+      } catch (e) {
+        console.log("Error | " + e);
+      }
       console.log(file);
     }
   })
 
   return (
     <div {...getRootProps()} className="image-upload-box">
+      {imgChosen}
       <input {...getInputProps()} />
       {isDragActive ? 
         <p>Drop the files here...</p> :
