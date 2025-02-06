@@ -23,9 +23,15 @@ async def encode_image64(image):
     readImg = await image.read()
     return base64.b64encode(readImg).decode("utf-8")
 
+
 @app.post('/image')
 async def image(file_upload: UploadFile = File(...)):
     
+    with open('./prompts/imagePrompt.txt', 'r') as file:
+        fileLines = file.readlines()
+        imageToWordsPrompt = " ".join(line.strip() for line in fileLines)
+        print(imageToWordsPrompt)
+        
     ## STEP 1: Decode the image, and get its description.
     
     #Use base64 encoding for image
@@ -38,7 +44,8 @@ async def image(file_upload: UploadFile = File(...)):
             "content": [
                 {
                     "type": "text", 
-                    "text": "Please provide a detailed explanation for what you see in this image."},
+                    "text": imageToWordsPrompt
+                },
                 {
                     "type": "image_url",
                     "image_url": {"url": f"data:image/jpeg;base64,{base64img}"}

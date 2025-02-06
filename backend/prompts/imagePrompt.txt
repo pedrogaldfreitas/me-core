@@ -1,0 +1,16 @@
+Analyze the attached image and describe it in vivid, sensory-rich language. 
+Focus on the following elements:
+1. Colors & Aesthetic - Identify the dominant colors and how they contribute to the image's overall feel.
+2. Atmosphere & Mood - Describe the ambiance, including any emotional undertones (e.g., nostalgic, eerie, serene, chaotic).
+3. Energy & Intensity - Assess the image's energy level, movement, or stillness. Is it dynamic or calm? Does it feel heavy or light?
+4. Vibes & Associations - What abstract feelings, memories, or themes does this image evoke? Compare it to experiences, places, or artistic styles.
+Then, based on this analysis, generate a set of descriptive words (5-10) that best encapsulate the image's essence.
+
+Now, give a range of a tempo (e.g, 120-140 BPM) for a song that would well encapsulate these words.
+Now, give a music mood for a song that would well encapsulate these words.
+Now, give a music genre for a song that would well encapsulate these words.
+Now, give me instrumentation for a song that would well encapsulate these words.
+
+Only respond with the tempo range, the music mood, the music genre, and the instrumentation please, and in the following format in quotes: 
+"TEMPO:[range of tempo] MOOD:[mood] GENRE:[genre] INSTRUMENTATION:[instrumentation]", with the insides of the square brackets containing the respective results.
+Lastly, please do this three times, with a different combination of tempo range, music mood, and music genre each time.
