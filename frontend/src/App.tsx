@@ -9,10 +9,17 @@ function App() {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     //accept: 'image/*',
     onDrop: (acceptedFiles) => {
-      const file = acceptedFiles[0];
+      const file: File = acceptedFiles[0];
+      const endpoint: string = 'http://localhost:8000/image';
+      const formData: FormData = new FormData();
+
+      formData.append('file_upload', file);
 
       try {
-        fetch('http://localhost:8000/image').then(res => res.json()).then(data => setImgChosen(data.message));
+        fetch(endpoint, {
+          method: "POST",
+          body: formData
+        }).then(res => res.json()).then((data) => console.log(data.message.message.content)/*data => setImgChosen(data.message)*/);
       } catch (e) {
         console.log("Error | " + e);
       }
