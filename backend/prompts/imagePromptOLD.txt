@@ -11,6 +11,6 @@ Now, give a music mood for a song that would well encapsulate these words.
 Now, give a music genre for a song that would well encapsulate these words.
 Now, give me instrumentation for a song that would well encapsulate these words.
 
-Now, recommend a song with a tempo in the range you just gave, with the same mood you gave, the same instrumentation you gave, and the same genre you gave.
-
+Only respond with the tempo range, the music mood, the music genre, and the instrumentation please, and in the following format in quotes: 
+"TEMPO:[range of tempo] MOOD:[mood] GENRE:[genre] INSTRUMENTATION:[instrumentation]", with the insides of the square brackets containing the respective results.
 Lastly, please do this three times, with a different combination of tempo range, music mood, and music genre each time.

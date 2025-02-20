@@ -4,6 +4,7 @@ import base64
 from openai import OpenAI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
+import spotipy
 
 load_dotenv()
 
@@ -23,15 +24,13 @@ async def encode_image64(image):
     readImg = await image.read()
     return base64.b64encode(readImg).decode("utf-8")
 
+with open('./prompts/imagePrompt.txt', 'r') as file:
+    fileLines = file.readlines()
+    imageToWordsPrompt = " ".join(line.strip() for line in fileLines)      
 
 @app.post('/image')
 async def image(file_upload: UploadFile = File(...)):
     
-    with open('./prompts/imagePrompt.txt', 'r') as file:
-        fileLines = file.readlines()
-        imageToWordsPrompt = " ".join(line.strip() for line in fileLines)
-        print(imageToWordsPrompt)
-        
     ## STEP 1: Decode the image, and get its description.
     
     #Use base64 encoding for image
