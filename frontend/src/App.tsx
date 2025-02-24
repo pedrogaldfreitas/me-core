@@ -19,7 +19,7 @@ function App() {
         fetch(endpoint, {
           method: "POST",
           body: formData
-        }).then(res => res.json()).then((data) => console.log(data.message.message.content)/*data => setImgChosen(data.message)*/);
+        }).then(res=>console.log(res))//.then(res => res.json()).then((data) => console.log(data.message.message.content)/*data => setImgChosen(data.message)*/);
       } catch (e) {
         console.log("Error | " + e);
       }

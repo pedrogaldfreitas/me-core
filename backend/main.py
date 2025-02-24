@@ -14,7 +14,7 @@ openai = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 ## Allow requests from frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
@@ -36,23 +36,24 @@ async def image(file_upload: UploadFile = File(...)):
     #Use base64 encoding for image
     base64img = await encode_image64(file_upload)
     
-    res = openai.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{  
-            "role": "user",
-            "content": [
-                {
-                    "type": "text", 
-                    "text": imageToWordsPrompt
-                },
-                {
-                    "type": "image_url",
-                    "image_url": {"url": f"data:image/jpeg;base64,{base64img}"}
-                }
-            ]
-        }]
-    )
+    # res = openai.chat.completions.create(
+    #     model="gpt-4o-mini",
+    #     messages=[{  
+    #         "role": "user",
+    #         "content": [
+    #             {
+    #                 "type": "text", 
+    #                 "text": imageToWordsPrompt
+    #             },
+    #             {
+    #                 "type": "image_url",
+    #                 "image_url": {"url": f"data:image/jpeg;base64,{base64img}"}
+    #             }
+    #         ]
+    #     }]
+    # )
     
     ## STEP 2: 
     
-    return {'message': res.choices[0]}
+    # return {'message': res.choices[0]}
+    return {'message': 'hi'}
