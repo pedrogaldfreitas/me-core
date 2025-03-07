@@ -7,6 +7,8 @@ services:
       - ./backend:/app
     ports:
       - "8000:8000"
+    environment:
+      - WATCHFILES_FORCE_POLLING=true
     networks:
       - my-network
 
@@ -14,6 +16,12 @@ services:
     build: ./frontend
     ports:
       - "3000:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - VITE_API_URL=http://backend:8000
     depends_on:
       - backend
     networks:
