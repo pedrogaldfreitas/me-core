@@ -2,17 +2,20 @@ version: '3.8'
 
 services:
   backend:
+    container_name: backend
     build: ./backend
     volumes:
-      - ./backend:/app
+      - ./backend:/app:consistent #DO :consistent WHILE DEVELOPING. DO :delegated WHEN DEPLOYING APP.
+      - /app/__pycache__  #Avoid syncing cache files
+      - /app/.venv  #Ignore virtual env if using one
     ports:
       - "8000:8000"
-    environment:
-      - WATCHFILES_FORCE_POLLING=true
     networks:
       - my-network
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload --reload-dir /app
 
   frontend:
+    container_name: frontend
     build: ./frontend
     ports:
       - "3000:5173"

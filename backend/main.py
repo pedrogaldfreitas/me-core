@@ -59,4 +59,4 @@ async def image(file_upload: UploadFile = File(...)):
 
 @app.get('/')
 async def mainapi():
-    return {'message': 'API Works.'}
+    return {'message': 'API Works.3'}
