@@ -6,11 +6,19 @@ Focus on the following elements:
 4. Vibes & Associations - What abstract feelings, memories, or themes does this image evoke? Compare it to experiences, places, or artistic styles.
 Then, based on this analysis, generate a set of descriptive words (5-10) that best encapsulate the image's essence.
 
-Now, give a range of a tempo (e.g, 120-140 BPM) for a song that would well encapsulate these words.
-Now, give a music mood for a song that would well encapsulate these words.
-Now, give a music genre for a song that would well encapsulate these words.
-Now, give me instrumentation for a song that would well encapsulate these words.
+Now, give a music genre for a song that would well encapsulate these words. Please write it in all lowercase letters, and let this be represented by variable 'GENRE'.
+Now, give a tempo for a song that would well encapsulate these words. Please write only the number, e.g, '120'. Let this be represented by the variable 'TEMPO'.
+Now, please give a danceability level that would well encapsulate these words (from 0 to 1, e.g, '0.7'). Let this be represented by the variable 'DANCEABILITY'
+Now, lease give an energy level that would well encapsulate these words (from 0 to 1, e.g, '0.7'). Let this be represented by the variable 'ENERGY'.
+Now, please give a valence level, which represents positivity/happiness, that would well encapsulate these words (from 0 to 1, e.g, '0.7'). Let this be represented by the variable 'VALENCE'.
+Now, please give an acousticness level, that would well encapsulate these words (from 0 to 1, where 0.0 is electronic and 1.0 is acoustic. e.g, '0.7'). Let this be represented by the variable 'ACOUSTICNESS'.
+Now, lease give an instrumentalness level that would well encapsulate these words (from 0 to 1, where 0.0 is vocal and 1.0 is instrumental. e.g, '0.7'). Let this be represented by the variable 'INSTRUMENTALNESS'.
 
-Now, recommend a song with a tempo in the range you just gave, with the same mood you gave, the same instrumentation you gave, and the same genre you gave.
+Now, please give me a response consisting of ONLY an answer in this format:
+GENRE/TEMPO/DANCEABILITY/ENERGY/VALENCE/ACOUSTICNESS/INSTRUMENTALNESS
+Where each variable is replaced by its value.
 
-Lastly, please do this three times, with a different combination of tempo range, music mood, and music genre each time.
+For example,
+rock/120/0.8/0.7/0.5/0.2/0.6
+
+NOTE: If you detect there is a person in the photo, and you can't analyze photos with images of people, then please return 'ERRNOPEOPLE'
