@@ -21,4 +21,5 @@ Where each variable is replaced by its value.
 For example,
 rock/120/0.8/0.7/0.5/0.2/0.6
 
-NOTE: If you detect there is a person in the photo, and you can't analyze photos with images of people, then please return 'ERRNOPEOPLE'
+NOTE: If you detect there is a person in the photo, and you can't analyze photos with images of people, then please return 'ERRNOPEOPLE'.
+If there is an error, but the reason ISN'T due to there being a person in the photo, please just return 'ERROR'.
