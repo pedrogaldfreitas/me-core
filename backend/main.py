@@ -61,32 +61,35 @@ async def image(file_upload: UploadFile = File(...)):
     
     ## STEP 2: Tokenize response from gpt-4o, or detect error.
     
-    #gptResponse = res.choices[0]#[0]['message']['content']
-    print(res)
+    gptResponse = res.choices[0].message.content
+    print(gptResponse)
 
-    # if gptResponse == "ERRNOPEOPLE":
-    #     print("ERRNOPEOPLE Detected.")
-    #     return {'message': "Sorry! We can't process images with people in it."}
+    if gptResponse == "ERRNOPEOPLE":
+        print("ERRNOPEOPLE Detected.")
+        return {'message': "Sorry! We can't process images with people in it."}
     
-    # musicInfo = gptResponse.split('/')
-    # print("MUSIC INFO = ", musicInfo)
+    musicInfo = gptResponse.split('/')
+    print("MUSIC INFO = ", musicInfo)
     
     ## STEP 3: Use Spotify API to find music. (GENRE/TEMPO/DANCEABILITY/ENERGY/VALENCE/ACOUSTICNESS/INSTRUMENTALNESS)
 
     #KEEP IN MIND: You should get the music info as a JSON object earlier for easier mapping here.
-    # recommendations = sp.recommendations(
-    #     seed_genres=[musicInfo[0]],
-    #     limit=1,
-    #     target_tempo=float(musicInfo[1]),
-    #     target_danceability=float(musicInfo[2]),
-    #     target_energy=float(musicInfo[3]),
-    #     target_valence=float(musicInfo[4]),
-    #     target_acousticness=float(musicInfo[5]),
-    #     target_instrumentalness=float(musicInfo[6]),
-    # )
+    # try:  
+    #     recommendations = sp.recommendations(
+    #         seed_genres=[musicInfo[0]],
+    #         limit=1,
+    #         target_tempo=float(musicInfo[1]),
+    #         target_danceability=float(musicInfo[2]),
+    #         target_energy=float(musicInfo[3]),
+    #         target_valence=float(musicInfo[4]),
+    #         target_acousticness=float(musicInfo[5]),
+    #         target_instrumentalness=float(musicInfo[6]),
+    #     )
+    #     track = recommendations
+    #     print(track)
+    # except Exception as e:
+    #     print("Error getting recommendations.")
     
-    # track = recommendations
-    # print(track)
     #outputSong = f"{track['name']} by {track['artists'][0]['name']}"
     return {'message': res.choices[0]}
 
