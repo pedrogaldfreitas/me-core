@@ -1,9 +1,9 @@
-version: '3.8'
-
 services:
   backend:
     container_name: backend
     build: ./backend
+    env_file:
+      - ./backend/.env
     volumes:
       - ./backend:/app:consistent #DO :consistent WHILE DEVELOPING. DO :delegated WHEN DEPLOYING APP.
       - /app/__pycache__  #Avoid syncing cache files

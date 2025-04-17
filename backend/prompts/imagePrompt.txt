@@ -6,7 +6,26 @@ Focus on the following elements:
 4. Vibes & Associations - What abstract feelings, memories, or themes does this image evoke? Compare it to experiences, places, or artistic styles.
 Then, based on this analysis, generate a set of descriptive words (5-10) that best encapsulate the image's essence.
 
-Now, give a music genre for a song that would well encapsulate these words. Please write it in all lowercase letters, and let this be represented by variable 'GENRE'.
+Now, please choose a music genre from the list below that best suits the 4 elements you have just identified above. Let this music genre be presented exactly as it is in the list below, and be represented by the variable 'GENRE'
+['acoustic', 'afrobeat', 'alt-rock', 'alternative', 'ambient', 'anime',
+'black-metal', 'bluegrass', 'blues', 'bossanova', 'brazil', 'breakbeat',
+'british', 'cantopop', 'chicago-house', 'children', 'chill', 'classical',
+'club', 'comedy', 'country', 'dance', 'dancehall', 'death-metal', 'deep-house',
+'detroit-techno', 'disco', 'drum-and-bass', 'dub', 'dubstep', 'edm',
+'emo', 'folk', 'forro', 'french', 'funk', 'garage', 'german', 'gospel',
+'goth', 'grindcore', 'groove', 'grunge', 'guitar', 'happy', 'hard-rock',
+'hardcore', 'hardstyle', 'heavy-metal', 'hip-hop', 'holidays', 'honky-tonk',
+'house', 'idm', 'indian', 'indie', 'indie-pop', 'industrial', 'iranian',
+'j-dance', 'j-idol', 'j-pop', 'j-rock', 'jazz', 'k-pop', 'kids', 'latin',
+'latino', 'malay', 'mandopop', 'metal', 'metal-misc', 'metalcore', 'minimal-techno',
+'movies', 'mpb', 'new-age', 'new-release', 'opera', 'pagode', 'party', 'philippines-opm',
+'piano', 'pop', 'pop-film', 'post-dubstep', 'power-pop', 'progressive-house',
+'psych-rock', 'punk', 'punk-rock', 'r-n-b', 'rainy-day', 'reggae', 'reggaeton',
+'road-trip', 'rock', 'rock-n-roll', 'rockabilly', 'romance', 'sad', 'salsa',
+'samba', 'sertanejo', 'show-tunes', 'singer-songwriter', 'ska', 'sleep',
+'songwriter', 'soul', 'soundtracks', 'spanish', 'study', 'summer', 'swedish',
+'synth-pop', 'tango', 'techno', 'trance', 'trip-hop', 'turkish', 'work-out', 'world-music']
+
 Now, give a tempo for a song that would well encapsulate these words. Please write only the number, e.g, '120'. Let this be represented by the variable 'TEMPO'.
 Now, please give a danceability level that would well encapsulate these words (from 0 to 1, e.g, '0.7'). Let this be represented by the variable 'DANCEABILITY'
 Now, lease give an energy level that would well encapsulate these words (from 0 to 1, e.g, '0.7'). Let this be represented by the variable 'ENERGY'.

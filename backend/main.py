@@ -4,17 +4,36 @@ import base64
 from openai import OpenAI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
-from spotipy import Spotify, SpotifyOAuth
+from spotipy import Spotify
+from spotipy.oauth2 import SpotifyClientCredentials
 
 load_dotenv()
 
 app = FastAPI()
 openai = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
-sp = Spotify(auth_manager = SpotifyOAuth(
-    client_id=os.environ.get("SPOTIFY_CLIENT_ID"),
-    client_secret=os.environ.get("SPOTIFY_CLIENT_SECRET"),
-    redirect_uri=os.getenv("SPOTIPY_REDIRECT_URI")
-))
+
+print("Spotify clientId = ", os.getenv("SPOTIFY_CLIENT_ID"))
+print("Spotify clientSecret = ", os.getenv("SPOTIFY_CLIENT_SECRET"))
+
+client_creds = SpotifyClientCredentials(
+    client_id=os.getenv("SPOTIFY_CLIENT_ID"),
+    client_secret=os.getenv("SPOTIFY_CLIENT_SECRET"),
+)
+
+sp = Spotify(auth_manager = client_creds)
+
+# print("auth = ", sp._auth)
+# try:
+#     print("Auth user = ", sp.current_user())
+# except Exception as e:
+#     print("Auth error:", e)
+# print("Details of auth = ", sp.auth_manager)
+
+# try:
+#     results = sp.search(q='Radiohead', type='artist')
+#     print("Search result =", {"artist": results['artists']['items'][0]['name']})
+# except Exception as e:
+#     print("Search error:", {"error": str(e)})
 
 ## Allow requests from frontend
 app.add_middleware(
@@ -74,21 +93,23 @@ async def image(file_upload: UploadFile = File(...)):
     ## STEP 3: Use Spotify API to find music. (GENRE/TEMPO/DANCEABILITY/ENERGY/VALENCE/ACOUSTICNESS/INSTRUMENTALNESS)
 
     #KEEP IN MIND: You should get the music info as a JSON object earlier for easier mapping here.
-    # try:  
-    #     recommendations = sp.recommendations(
-    #         seed_genres=[musicInfo[0]],
-    #         limit=1,
-    #         target_tempo=float(musicInfo[1]),
-    #         target_danceability=float(musicInfo[2]),
-    #         target_energy=float(musicInfo[3]),
-    #         target_valence=float(musicInfo[4]),
-    #         target_acousticness=float(musicInfo[5]),
-    #         target_instrumentalness=float(musicInfo[6]),
-    #     )
-    #     track = recommendations
-    #     print(track)
-    # except Exception as e:
-    #     print("Error getting recommendations.")
+    try:  
+        recommendations = sp.recommendations(
+            seed_genres=['pop']
+            # seed_genres=[musicInfo[0]],
+            # limit=1,
+            # target_tempo=float(musicInfo[1]),
+            # target_danceability=float(musicInfo[2]),
+            # target_energy=float(musicInfo[3]),
+            # target_valence=float(musicInfo[4]),
+            # target_acousticness=float(musicInfo[5]),
+            # target_instrumentalness=float(musicInfo[6]),
+        )
+        print("AFTER")
+        track = recommendations
+        print("Track: ", track)
+    except Exception as e:
+        print("Error getting recommendations: ", e)
     
     #outputSong = f"{track['name']} by {track['artists'][0]['name']}"
     return {'message': res.choices[0]}
