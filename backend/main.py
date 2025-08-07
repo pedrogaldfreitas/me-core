@@ -15,10 +15,16 @@ openai = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 print("Spotify clientId = ", os.getenv("SPOTIFY_CLIENT_ID"))
 print("Spotify clientSecret = ", os.getenv("SPOTIFY_CLIENT_SECRET"))
 
+# client_creds = SpotifyClientCredentials(
+#     client_id=os.getenv("SPOTIFY_CLIENT_ID"),
+#     client_secret=os.getenv("SPOTIFY_CLIENT_SECRET"),
+# )
+
 client_creds = SpotifyClientCredentials(
     client_id=os.getenv("SPOTIFY_CLIENT_ID"),
     client_secret=os.getenv("SPOTIFY_CLIENT_SECRET"),
 )
+
 
 sp = Spotify(auth_manager = client_creds)
 
